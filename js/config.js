@@ -2,15 +2,15 @@ let respecConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "WV",
-  specType: "HR",
-  pubDomain: "dk",
-  shortName: "template",
-  publishDate: "2023-06-21",
-  publishVersion: "0.0.3",
+  specStatus: "wv",
+  specType: "basis",
+  pubDomain: "notificatieservices",
+  shortName: "abonneren",
+  publishDate: "2025-06-30",
+  publishVersion: "0.0.1",
 
   // TODO: Verwijder voordat de release plaats vindt
-  latestVersion: "https://github.com/logius-standaarden/respec-template/",
+  latestVersion: "https://github.com/logius-standaarden/abonneren",
   prevVersion: [],
 
   editors:
@@ -28,15 +28,6 @@ let respecConfig = {
         company: "Logius",
         companyURL: "https://logius.nl",
       }
-    ],
-  github: "https://github.com/Logius-standaarden/ReSpec-template",
+    ]
 
-
-  // Create PDF and link to file in header (optional):
-  alternateFormats: [
-      {
-          label: "pdf",
-          uri: "template.pdf",
-      },
-  ],
 };
