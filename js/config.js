@@ -29,5 +29,5 @@ let respecConfig = {
         companyURL: "https://logius.nl",
       }
     ]
-
+postProcess: [window.respecMermaid.createFigures],
 };
