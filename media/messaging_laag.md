@@ -1,3 +1,4 @@
+```mermaid
 ---
 config:
   theme: neo-dark
@@ -23,7 +24,7 @@ architecture-beta
     ce2:B --> T:s2
     a1:B --> T:ce1
     a2:B --> T:ce2
-
-<figure>
-<figcaption>Mermaid voorbeeld</figcaption>
+```
+<figure id='messaging_laag'>
+<figcaption>Voorbeeld van AMQP based messaging in FDS</figcaption>
 </figure>
