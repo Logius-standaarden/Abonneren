@@ -24,3 +24,6 @@ architecture-beta
     a1:B --> T:ce1
     a2:B --> T:ce2
 
+<figure>
+<figcaption>Mermaid voorbeeld</figcaption>
+</figure>
