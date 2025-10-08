@@ -1,32 +1,48 @@
----
-config:
-  theme: neo-dark
-  architecture-beta:
-    htmlLabels: false
----
-architecture-beta
-    group not[Messaging Laag]
-    group gova[Gov Org A] in not
-    group govb[Gov Org B] in not
+%% Herziene versie nu in vorm van flowchart (ipv architecture-beta)
+%% Theme: dark-friendly, readable, grouped with colors
 
-    group gov[Governance en Policy Laag]
-    group id[Federated Identity Provider]
+flowchart TD
+    %% Define styling
+    classDef gov fill:#2b4c7e,stroke:#1c355c,color:#fff
+    classDef id fill:#3b7a57,stroke:#2c5941,color:#fff
+    classDef not fill:#444,stroke:#222,color:#fff
+    classDef service fill:#555,stroke:#222,color:#fff,stroke-width:1px
+    classDef cloud fill:#4a6fa5,color:#fff
+    classDef database fill:#6a4c93,color:#fff
+    classDef server fill:#3b8ea5,color:#fff
+    classDef disk fill:#b56576,color:#fff
+    classDef internet fill:#2a9d8f,color:#fff
 
-    service s1(cloud)[AMQP Broker A] in gova
-    service s2(cloud)[AMQP Broker B] in govb
-    service ce1(server)[CloudEvents Event Producer] in not
-    service ce2(server)[CloudEvents Event Consumer] in not
-    service a1(database)[AuthN AuthZ] in not
-    service a2(database)[AuthN AuthZ] in not
+    %% Groups / Layers
+    subgraph NOT["Messaging Laag 📨"]
+        subgraph GOVA["Gov Org A 🏛️"]
+            s1[☁️ AMQP Broker A]:::cloud
+        end
+        subgraph GOVB["Gov Org B 🏛️"]
+            s2[☁️ AMQP Broker B]:::cloud
+        end
+        ce1[💻 CloudEvents Event Producer]:::server
+        ce2[💻 CloudEvents Event Consumer]:::server
+        a1[🗄️ AuthN/AuthZ]:::database
+        a2[🗄️ AuthN/AuthZ]:::database
+    end
+    class NOT,GOVA,GOVB not
 
-    service g1(database)[RBAC of ABAC policies] in gov
-    service g2(disk)[Audit Logging] in gov
-    service g3(server)[Compliance Monitoring] in gov
+    subgraph GOV["Governance & Policy Laag ⚖️"]
+        g1[📜 RBAC / ABAC Policies]:::database
+        g2[💾 Audit Logging]:::disk
+        g3[🖥️ Compliance Monitoring]:::server
+    end
+    class GOV gov
 
-    service i1(internet)[Oauth en OIDC] in id
+    subgraph ID["Federated Identity Provider 🔐"]
+        i1[🌐 OAuth / OIDC]:::internet
+    end
+    class ID id
 
-    s1:R <--> L:s2
-    ce1:B --> T:s1
-    ce2:B --> T:s2
-    a1:B --> T:ce1
-    a2:B --> T:ce2
+    %% Relationships
+    s1 <--> s2
+    ce1 --> s1
+    ce2 --> s2
+    a1 --> ce1
+    a2 --> ce2
