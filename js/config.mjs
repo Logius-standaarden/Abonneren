@@ -1,4 +1,7 @@
-let respecConfig = {
+import { loadRespecWithConfiguration } from "https://logius-standaarden.github.io/publicatie/respec/organisation-config.mjs";
+import { generateMermaidFigures } from "https://logius-standaarden.github.io/publicatie/respec/plugins/mermaid.mjs";
+
+loadRespecWithConfiguration({
   useLogo: true,
   useLabel: true,
   license: "cc-by",
@@ -28,6 +31,6 @@ let respecConfig = {
         company: "Logius",
         companyURL: "https://logius.nl",
       }
-    ]
-postProcess: [window.respecMermaid.createFigures],
-};
+    ],
+  postProcess: [ generateMermaidFigures ],
+});
