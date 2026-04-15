@@ -32,5 +32,6 @@ loadRespecWithConfiguration({
         companyURL: "https://www.logius.nl",
       }
     ],
+  github: "https://github.com/Logius-standaarden/Abonneren",
   postProcess: [ generateMermaidFigures ],
 });
